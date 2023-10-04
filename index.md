@@ -10,7 +10,7 @@ Esta abordagem oferece uma solução promissora para o desafio da falta de atual
 
 ## Diagrama de Blocos
 
-![Diagrama de Blocos](Design sem nome (1).jpg)
+![Texto alternativo da imagem](arquitetura.jpg)
 
 Descrição dos Blocos
 
