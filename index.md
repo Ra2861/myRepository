@@ -12,29 +12,29 @@ Esta abordagem oferece uma solução promissora para o desafio da falta de atual
 
 ![Diagrama de Blocos](link_para_a_imagem.png)
 
-## Descrição dos Blocos
+Descrição dos Blocos
 
-### Fase Inicial de Treinamento (Treinamento Inicial)
+**Fase Inicial de Treinamento (Treinamento Inicial)**
 
 Nesta fase, o agente de diálogo é treinado em duas tarefas principais: DIALOGUE (previsão da próxima fala) e SATISFACTION (avaliação da satisfação do parceiro de conversa). O treinamento é realizado utilizando dados supervisionados disponíveis, que são chamados de exemplos Human-Human (HH) e foram gerados em conversas entre dois seres humanos.
 
-### Fase de Implantação (Implantação)
+**Fase de Implantação (Implantação)**
 
 Durante esta fase, o agente de diálogo participa de conversas de várias rodadas com os usuários e extrai novos exemplos de duas categorias. A cada turno, o agente observa o contexto (x), que é a história da conversa até aquele ponto, e usa isso para prever sua próxima fala (yˆ) e a satisfação estimada de seu parceiro (sˆ). Se o índice de satisfação estiver acima de um limite especificado (t), o agente extrai um novo exemplo de DIALOGUE chamado Human-Bot (HB) usando o contexto anterior (x) e a resposta do humano (y), continuando a conversa.
 
-### Solicitação de Feedback (Feedback Request)
+**Solicitação de Feedback (Feedback Request)**
 
 Se o usuário parecer insatisfeito com a resposta anterior do agente (ˆs < t), o agente solicita feedback por meio de uma pergunta (q). A resposta de feedback (f) é usada para criar um novo exemplo para a tarefa FEEDBACK (previsão do feedback). O agente confirma o recebimento do feedback e a conversa continua.
 
-### Taxa de Coleta de Exemplos (Ajuste da Taxa)
+**Taxa de Coleta de Exemplos (Ajuste da Taxa)**
 
 A taxa na qual novos exemplos de DIALOGUE e FEEDBACK são coletados pode ser ajustada, variando o valor do limite de satisfação (t). Isso permite controlar o equilíbrio entre aprimoramento contínuo e conservação de recursos.
 
-### Retreinamento Periódico (Retreinamento)
+**Retreinamento Periódico (Retreinamento)**
 
 Periodicamente, o agente é submetido a uma fase de retreinamento, na qual todos os dados disponíveis (incluindo HH, HB e exemplos de FEEDBACK) são usados para melhorar o desempenho na tarefa principal de DIALOGUE.
 
-### Uso de Feedback Natural (Feedback Natural)
+**Uso de Feedback Natural (Feedback Natural)**
 
 É importante destacar que as respostas do usuário são sempre em formato de diálogo natural. Em nenhum momento, os novos exemplos de FEEDBACK são inspecionados, pós-processados ou limpos. A abordagem confia na relação aprendível entre os contextos da conversa e o feedback correspondente, aproveitando
 
@@ -48,20 +48,24 @@ A proposta de fomentar o aprendizado contínuo em um sistema conversacional, bas
 
 Considerando essa proposta, é importante ressaltar algumas considerações:
 
-Aprimoramento Contínuo: A abordagem proposta capacita o sistema a melhorar sua capacidade de diálogo e satisfação do usuário continuamente. Ao extrair exemplos reais de conversas e feedback dos usuários, o sistema pode se ajustar às mudanças nos padrões de interação e nas expectativas dos usuários.
+**Aprimoramento Contínuo:** A abordagem proposta capacita o sistema a melhorar sua capacidade de diálogo e satisfação do usuário continuamente. Ao extrair exemplos reais de conversas e feedback dos usuários, o sistema pode se ajustar às mudanças nos padrões de interação e nas expectativas dos usuários.
 
-Feedback Natural: A abordagem se baseia em feedback natural, não exigindo intervenções humanas para inspecionar ou pós-processar os dados. Isso torna a abordagem mais eficiente e alinhada com conversas reais.
+**Feedback Natural:** A abordagem se baseia em feedback natural, não exigindo intervenções humanas para inspecionar ou pós-processar os dados. Isso torna a abordagem mais eficiente e alinhada com conversas reais.
 
-Ajuste da Taxa de Coleta: A capacidade de ajustar a taxa de coleta de exemplos permite equilibrar a necessidade de aprendizado contínuo com os recursos disponíveis, tornando a abordagem flexível e adaptável.
+**Ajuste da Taxa de Coleta:** A capacidade de ajustar a taxa de coleta de exemplos permite equilibrar a necessidade de aprendizado contínuo com os recursos disponíveis, tornando a abordagem flexível e adaptável.
 
 É importante reconhecer que a implementação dessa abordagem requer um esforço considerável:
 
-Coleta de Dados: É necessário coletar e armazenar grandes volumes de dados de conversas, incluindo exemplos de interações bem-sucedidas e feedback do usuário. Nesta etapa tecnologias de bancos de dados como MongoDB e sistemas de armazenamento em nuvem como AWS S3 podem ser utilizadas.
+**Coleta de Dados:** É necessário coletar e armazenar grandes volumes de dados de conversas, incluindo exemplos de interações bem-sucedidas e feedback do usuário. Nesta etapa tecnologias de bancos de dados como MongoDB e sistemas de armazenamento em nuvem como AWS S3 podem ser utilizadas.
 
-Treinamento de Modelos: O treinamento de modelos de aprendizado de máquina para prever as próximas respostas e a satisfação do usuário exige recursos computacionais significativos. Plataformas como TensorFlow e PyTorch oferecem as ferramentas necessárias para treinar modelos de linguagem e modelos de satisfação do usuário.
+**Treinamento de Modelos:** O treinamento de modelos de aprendizado de máquina para prever as próximas respostas e a satisfação do usuário exige recursos computacionais significativos. Plataformas como TensorFlow e PyTorch oferecem as ferramentas necessárias para treinar modelos de linguagem e modelos de satisfação do usuário.
 
-Ajuste de Parâmetros: A definição de parâmetros, como o limite de satisfação, requer análise e ajuste cuidadosos para equilibrar o aprendizado contínuo com a qualidade das interações.
+**Ajuste de Parâmetros:** A definição de parâmetros, como o limite de satisfação, requer análise e ajuste cuidadosos para equilibrar o aprendizado contínuo com a qualidade das interações.
 
-Retreinamento Periódico: A fase de retreinamento periódico exige uma infraestrutura robusta para atualizar os modelos com dados acumulados.A automação do processo de retreinamento é essencial. É possível usar ferramentas de automação de fluxo de trabalho como Apache Airflow para agendar tarefas de retreinamento.
+**Retreinamento Periódico:** A fase de retreinamento periódico exige uma infraestrutura robusta para atualizar os modelos com dados acumulados.A automação do processo de retreinamento é essencial. É possível usar ferramentas de automação de fluxo de trabalho como Apache Airflow para agendar tarefas de retreinamento.
 
-Monitoramento Contínuo: É fundamental estabelecer sistemas de monitoramento contínuo para avaliar o desempenho do sistema e identificar problemas ou deriva de conceito.Ferramentas como ELK Stack (Elasticsearch, Logstash e Kibana) podem ser usadas para monitoramento de logs.
+**Monitoramento Contínuo:** É fundamental estabelecer sistemas de monitoramento contínuo para avaliar o desempenho do sistema e identificar problemas ou deriva de conceito.Ferramentas como ELK Stack (Elasticsearch, Logstash e Kibana) podem ser usadas para monitoramento de logs.
+
+### Bibliografia 
+
+HANCOCK, Braden; BORDES, Antoine; MAZARE, Pierre-Emmanuel; WESTON, Jason. Learning from dialogue after deployment: Feed yourself, chatbot!. Pré-impressão arXiv, 2019. Disponível em: <https://arxiv.org/abs/1901.05415>. Acesso em: [03/10/2023].
