@@ -37,3 +37,31 @@ Periodicamente, o agente é submetido a uma fase de retreinamento, na qual todos
 ### Uso de Feedback Natural (Feedback Natural)
 
 É importante destacar que as respostas do usuário são sempre em formato de diálogo natural. Em nenhum momento, os novos exemplos de FEEDBACK são inspecionados, pós-processados ou limpos. A abordagem confia na relação aprendível entre os contextos da conversa e o feedback correspondente, aproveitando
+
+Essa abordagem permite que o sistema conversacional aprenda e se adapte de forma contínua à medida que interage com os usuários, incorporando feedback real e ajustando-se a novos padrões e conceitos. O sistema se torna mais eficaz e relevante ao longo do tempo, refletindo as mudanças nas expectativas e necessidades dos usuários.
+
+A proposta visa criar um ciclo de aprendizado contínuo que se assemelha ao processo de aprendizado humano, em que a interação constante com o ambiente leva a melhorias constantes no desempenho e na eficácia do sistema conversacional.
+
+### Conclusão
+
+A proposta de fomentar o aprendizado contínuo em um sistema conversacional, baseado no paradigma apresentado, oferece uma abordagem promissora para manter a relevância e a eficácia desse sistema em um ambiente dinâmico. O ciclo de vida do "chatbot de autoalimentação" apresentado no diagrama de blocos permite que o agente de diálogo aprenda e se adapte constantemente às necessidades dos usuários, melhorando seu desempenho ao longo do tempo.
+
+Considerando essa proposta, é importante ressaltar algumas considerações:
+
+Aprimoramento Contínuo: A abordagem proposta capacita o sistema a melhorar sua capacidade de diálogo e satisfação do usuário continuamente. Ao extrair exemplos reais de conversas e feedback dos usuários, o sistema pode se ajustar às mudanças nos padrões de interação e nas expectativas dos usuários.
+
+Feedback Natural: A abordagem se baseia em feedback natural, não exigindo intervenções humanas para inspecionar ou pós-processar os dados. Isso torna a abordagem mais eficiente e alinhada com conversas reais.
+
+Ajuste da Taxa de Coleta: A capacidade de ajustar a taxa de coleta de exemplos permite equilibrar a necessidade de aprendizado contínuo com os recursos disponíveis, tornando a abordagem flexível e adaptável.
+
+É importante reconhecer que a implementação dessa abordagem requer um esforço considerável:
+
+Coleta de Dados: É necessário coletar e armazenar grandes volumes de dados de conversas, incluindo exemplos de interações bem-sucedidas e feedback do usuário. Nesta etapa tecnologias de bancos de dados como MongoDB e sistemas de armazenamento em nuvem como AWS S3 podem ser utilizadas.
+
+Treinamento de Modelos: O treinamento de modelos de aprendizado de máquina para prever as próximas respostas e a satisfação do usuário exige recursos computacionais significativos. Plataformas como TensorFlow e PyTorch oferecem as ferramentas necessárias para treinar modelos de linguagem e modelos de satisfação do usuário.
+
+Ajuste de Parâmetros: A definição de parâmetros, como o limite de satisfação, requer análise e ajuste cuidadosos para equilibrar o aprendizado contínuo com a qualidade das interações.
+
+Retreinamento Periódico: A fase de retreinamento periódico exige uma infraestrutura robusta para atualizar os modelos com dados acumulados.A automação do processo de retreinamento é essencial. É possível usar ferramentas de automação de fluxo de trabalho como Apache Airflow para agendar tarefas de retreinamento.
+
+Monitoramento Contínuo: É fundamental estabelecer sistemas de monitoramento contínuo para avaliar o desempenho do sistema e identificar problemas ou deriva de conceito.Ferramentas como ELK Stack (Elasticsearch, Logstash e Kibana) podem ser usadas para monitoramento de logs.
