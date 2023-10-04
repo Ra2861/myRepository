@@ -10,13 +10,13 @@ Esta abordagem oferece uma solução promissora para o desafio da falta de atual
 
 ## Diagrama de Blocos
 
-![Diagrama de Blocos](link_para_a_imagem.png)
+![Diagrama de Blocos](Design sem nome (1).jpg)
 
 Descrição dos Blocos
 
 **Fase Inicial de Treinamento (Treinamento Inicial)**
 
-Nesta fase, o agente de diálogo é treinado em duas tarefas principais: DIALOGUE (previsão da próxima fala) e SATISFACTION (avaliação da satisfação do parceiro de conversa). O treinamento é realizado utilizando dados supervisionados disponíveis, que são chamados de exemplos Human-Human (HH) e foram gerados em conversas entre dois seres humanos.
+Nesta fase, o agente de diálogo é treinado em duas tarefas principais: DIALOGUE previsão da próxima fala e SATISFACTION avaliação da satisfação do parceiro de conversa. O treinamento é realizado utilizando dados supervisionados disponíveis, que são chamados de exemplos Human-Human e foram gerados em conversas entre dois seres humanos.
 
 **Fase de Implantação (Implantação)**
 
@@ -24,7 +24,7 @@ Durante esta fase, o agente de diálogo participa de conversas de várias rodada
 
 **Solicitação de Feedback (Feedback Request)**
 
-Se o usuário parecer insatisfeito com a resposta anterior do agente (ˆs < t), o agente solicita feedback por meio de uma pergunta (q). A resposta de feedback (f) é usada para criar um novo exemplo para a tarefa FEEDBACK (previsão do feedback). O agente confirma o recebimento do feedback e a conversa continua.
+Se o usuário parecer insatisfeito com a resposta anterior do agente (ˆs < t), o agente solicita feedback por meio de uma pergunta (q). A resposta de feedback (f) é usada para criar um novo exemplo para a tarefa FEEDBACK previsão do feedback. O agente confirma o recebimento do feedback e a conversa continua.
 
 **Taxa de Coleta de Exemplos (Ajuste da Taxa)**
 
